@@ -36,4 +36,23 @@ public class WatchListDao {
 		return watchLists;
 	}
 	
+	public List<WatchList> queryByInvestorId(Integer investorId) {
+		List<WatchList> watchLists = new ArrayList<>();
+		String sql = "select id, investid, stockpoolid, tdate from watchlist where investid=" + investorId;
+		try(Statement statement = conn.createStatement();
+			ResultSet rs = statement.executeQuery(sql)) {
+			while(rs.next()) {
+				Integer id = rs.getInt("id");
+				Integer investid = rs.getInt("investid");
+				Integer stockpoolid = rs.getInt("stockpoolid");
+				Date tdate = rs.getDate("tdate");
+				WatchList watchlist = new WatchList(id, investid, stockpoolid, tdate);
+				watchLists.add(watchlist);
+			}
+		} catch(Exception e) {
+			e.printStackTrace(System.out);
+		}
+		return watchLists;
+	}
+	
 }

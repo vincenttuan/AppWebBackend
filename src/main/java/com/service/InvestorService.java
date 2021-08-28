@@ -10,12 +10,14 @@ import javax.ws.rs.core.MediaType;
 
 import com.service.dao.InvestorDao;
 import com.service.dao.TransactionLogDao;
+import com.service.dao.WatchListDao;
 import com.service.model.Investor;
 
 @Path("/investor")
 public class InvestorService {
 	private InvestorDao investorDao = new InvestorDao();
 	private TransactionLogDao transactionLogDao = new TransactionLogDao();
+	private WatchListDao watchListDao = new WatchListDao();
 	
 	// http://localhost:8080/AppWebBackend/service/investor/findall
 	@Path("/findall")
@@ -33,6 +35,7 @@ public class InvestorService {
 		Investor investor = investorDao.getInvestorById(id);
 		// 組合關聯資料
 		investor.setTransactionLogs(transactionLogDao.queryByInvestorId(id));
+		investor.setWatchLists(watchListDao.queryByInvestorId(id));
 		return investor;
 	}
 	
