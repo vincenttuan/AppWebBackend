@@ -11,6 +11,9 @@ public class TransactionLog {
 	private Integer amount;
 	private Date tdate;
 	
+	//-- 關聯資料 one to many -----
+	private StockPool stockPool;
+	
 	public TransactionLog() {
 		
 	}
@@ -80,6 +83,15 @@ public class TransactionLog {
 
 	public void setTdate(Date tdate) {
 		this.tdate = tdate;
+	}
+
+	
+	public StockPool getStockPool() {
+		return stockPool;
+	}
+
+	public void setStockPool(StockPool stockPool) {
+		this.stockPool = stockPool;
 	}
 
 	@Override

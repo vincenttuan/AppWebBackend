@@ -10,7 +10,7 @@ public class Investor {
 	private String email;
 	private Date tdate;
 	
-	//-- 關聯資料 -----------------
+	//-- 關聯資料 one to many -----
 	private List<TransactionLog> transactionLogs;
 	private List<WatchList> watchLists;
 	

@@ -57,4 +57,6 @@ public class StockPoolDao {
 		}
 		return stockPools;
 	}
+	
+	
 }
