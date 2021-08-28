@@ -13,9 +13,13 @@ import com.service.dao.StockPoolDao;
 import com.service.dao.TransactionLogDao;
 import com.service.dao.WatchListDao;
 import com.service.model.Investor;
+import com.service.model.RealTimeStock;
 import com.service.model.StockPool;
 import com.service.model.TransactionLog;
 import com.service.model.WatchList;
+
+import yahoofinance.Stock;
+import yahoofinance.YahooFinance;
 
 @Path("/investor")
 public class InvestorService {
@@ -52,6 +56,23 @@ public class InvestorService {
 		watchLists.forEach(w -> {
 			StockPool stockPool = stockPoolDao.getStockPool(w.getStockpoolid());
 			w.setStockPool(stockPool);
+		});
+		
+		watchLists.forEach(w -> {
+			RealTimeStock rts = new RealTimeStock();
+			try {
+				Stock stock = YahooFinance.get(w.getStockPool().getSymbol());
+				rts.setBid(stock.getQuote().getBid().doubleValue());
+				rts.setAsk(stock.getQuote().getAsk().doubleValue());
+				rts.setLastprice(stock.getQuote().getPrice().doubleValue());
+				rts.setChange(stock.getQuote().getChange().doubleValue());
+				rts.setChangePercent(stock.getQuote().getChangeInPercent().doubleValue());
+				rts.setVolume(stock.getQuote().getVolume());
+				rts.setTransdate(stock.getQuote().getLastTradeTime().getTime());
+			} catch(Exception e) {
+				
+			}
+			w.setRealTimeStock(rts);
 		});
 		
 		return investor;

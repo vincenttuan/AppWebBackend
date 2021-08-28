@@ -10,7 +10,8 @@ public class WatchList {
 	
 	//-- 關聯資料 one to one -----
 	private StockPool stockPool;
-		
+	private RealTimeStock realTimeStock;
+	
 	public WatchList() {
 		
 	}
@@ -53,6 +54,14 @@ public class WatchList {
 
 	public void setStockPool(StockPool stockPool) {
 		this.stockPool = stockPool;
+	}
+	
+	public RealTimeStock getRealTimeStock() {
+		return realTimeStock;
+	}
+
+	public void setRealTimeStock(RealTimeStock realTimeStock) {
+		this.realTimeStock = realTimeStock;
 	}
 
 	@Override
