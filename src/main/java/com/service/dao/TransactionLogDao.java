@@ -40,7 +40,8 @@ public class TransactionLogDao {
 	
 	public List<TransactionLog> queryByInvestorId(Integer investorId) {
 		List<TransactionLog> transactionLogs = new ArrayList<>();
-		String sql = "select id, investid, stockpoolid, bs, price, amount, tdate from transactionlog where id=" + investorId;
+		String sql = "select id, investid, stockpoolid, bs, price, amount, tdate from transactionlog where investid=" + investorId;
+		System.out.println(sql);
 		try(Statement statement = conn.createStatement();
 			ResultSet rs = statement.executeQuery(sql)) {
 			while(rs.next()) {
