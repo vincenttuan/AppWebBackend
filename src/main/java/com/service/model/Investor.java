@@ -1,13 +1,18 @@
 package com.service.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Investor {
-	
+	// -- 欄位資料 ----------------
 	private Integer id;
 	private String username;
 	private String email;
 	private Date tdate;
+	
+	//-- 關聯資料 -----------------
+	private List<TransactionLog> transactionLogs;
+	private List<WatchList> watchLists;
 	
 	public Investor() {
 		
@@ -50,6 +55,24 @@ public class Investor {
 
 	public void setTdate(Date tdate) {
 		this.tdate = tdate;
+	}
+	
+	
+	
+	public List<TransactionLog> getTransactionLogs() {
+		return transactionLogs;
+	}
+
+	public void setTransactionLogs(List<TransactionLog> transactionLogs) {
+		this.transactionLogs = transactionLogs;
+	}
+
+	public List<WatchList> getWatchLists() {
+		return watchLists;
+	}
+
+	public void setWatchLists(List<WatchList> watchLists) {
+		this.watchLists = watchLists;
 	}
 
 	@Override
