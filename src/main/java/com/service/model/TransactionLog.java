@@ -11,7 +11,7 @@ public class TransactionLog {
 	private Integer amount;
 	private Date tdate;
 	
-	//-- 關聯資料 one to many -----
+	//-- 關聯資料 one to one -----
 	private StockPool stockPool;
 	
 	public TransactionLog() {

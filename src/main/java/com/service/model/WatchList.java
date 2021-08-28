@@ -8,6 +8,9 @@ public class WatchList {
 	private Integer stockpoolid;
 	private Date tdate;
 	
+	//-- 關聯資料 one to one -----
+	private StockPool stockPool;
+		
 	public WatchList() {
 		
 	}
@@ -42,6 +45,14 @@ public class WatchList {
 	}
 	public void setTdate(Date tdate) {
 		this.tdate = tdate;
+	}
+	
+	public StockPool getStockPool() {
+		return stockPool;
+	}
+
+	public void setStockPool(StockPool stockPool) {
+		this.stockPool = stockPool;
 	}
 
 	@Override

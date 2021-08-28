@@ -49,6 +49,11 @@ public class InvestorService {
 			t.setStockPool(stockPool);
 		});
 		
+		watchLists.forEach(w -> {
+			StockPool stockPool = stockPoolDao.getStockPool(w.getStockpoolid());
+			w.setStockPool(stockPool);
+		});
+		
 		return investor;
 	}
 	
